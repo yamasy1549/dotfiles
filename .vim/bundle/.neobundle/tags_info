@@ -5,6 +5,7 @@ neobundle.vim
 neocomplete.vim
 nerdcommenter
 syntastic
+typescript-vim
 unite-rails
 unite.vim
 vim-arduino-syntax

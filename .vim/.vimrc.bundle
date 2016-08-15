@@ -54,6 +54,7 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'sudar/vim-arduino-syntax'
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'digitaltoad/vim-pug'
+NeoBundle 'leafgarland/typescript-vim'
 
 " colorscheme
 NeoBundle 'w0ng/vim-hybrid'
