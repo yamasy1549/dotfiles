@@ -1,0 +1,103 @@
+" 各プラグインをインストールするディレクトリ
+let s:plugin_dir = expand('~/.vim/dein/')
+" dein.vimをインストールするディレクトリをランタイムパスへ追加
+let s:dein_dir = s:plugin_dir . 'repos/github.com/Shougo/dein.vim'
+execute 'set runtimepath+=' . s:dein_dir
+
+set nocompatible
+
+" dein.vimがまだ入ってなければ 最初に`git clone`
+if !isdirectory(s:dein_dir)
+  echo "install dein.vim..."
+  call mkdir(s:dein_dir, 'p')
+  silent execute printf('!git clone %s %s', 'https://github.com/Shougo/dein.vim', s:dein_dir)
+endif
+
+if dein#load_state(s:plugin_dir)
+  call dein#begin(s:plugin_dir)
+
+  let g:rc_dir = expand('~/.vim/')
+  let s:toml = g:rc_dir . 'dein.toml'
+
+  call dein#load_toml(s:toml, {'lazy': 0})
+
+  call dein#end()
+  call dein#save_state()
+endif
+
+if dein#check_install()
+  call dein#install()
+endif
+
+filetype plugin indent on
+
+
+"---------------------------------------------------------------
+" lightline.vim
+"---------------------------------------------------------------
+
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"\u2b64":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+      \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
+      \ }
+
+"---------------------------------------------------------------
+" NERD_commenter.vim
+"---------------------------------------------------------------
+
+"  ,, でコメントアウト/アンコメント
+let g:NERDSpaceDelims=1
+nmap ,, <plug>NERDCommenterToggle
+vmap ,, <plug>NERDCommenterSexy
+
+"---------------------------------------------------------------
+" unite.vim
+"---------------------------------------------------------------
+
+let g:unite_enable_start_insert = 1
+let g:unite_enable_split_vertically = 1
+let g:unite_winwidth = 48
+let g:unite_enable_short_source_names = 1
+let g:unite_source_history_yank_enable = 1
+
+nnoremap [unite] <Nop>
+nmap ,u [unite]
+noremap <silent> [unite]l :<C-u>Unite file<CR>
+noremap <silent> [unite]b :<C-u>Unite buffer<CR>
+noremap <silent> [unite]h :<C-u>Unite file_mru<CR>
+noremap <silent> [unite]y :<C-u>Unite history/yank<CR>
+noremap <silent> [unite]t :<C-u>Unite tab<CR>
+" unite-rails.vim
+noremap <silent> [unite]rc :<C-u>Unite rails/controller<CR>
+noremap <silent> [unite]rm :<C-u>Unite rails/model<CR>
+noremap <silent> [unite]rv :<C-u>Unite rails/view<CR>
+noremap <silent> [unite]ra :<C-u>Unite rails/asset<CR>
+noremap <silent> [unite]rd :<C-u>Unite rails/db<CR>
+noremap <silent> [unite]rb :<C-u>Unite rails/bundle<CR>
+noremap <silent> [unite]rs :<C-u>Unite rails/spec<CR>
+
+" ref: http://qiita.com/yuku_t/items/9263e6d9105ba972aea8
+function! DispatchUniteFileRecAsyncOrGit()
+  if isdirectory(getcwd()."/.git")
+    Unite file_rec/git
+  else
+    Unite file_rec/async
+  endif
+endfunction
+
+nnoremap <silent> [unite]f :<C-u>call DispatchUniteFileRecAsyncOrGit()<CR>

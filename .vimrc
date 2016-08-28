@@ -1,9 +1,12 @@
-source $HOME/.vim/.vimrc.bundle
+source $HOME/.vim/.vimrc.dein
 source $HOME/.vim/.vimrc.indent
 source $HOME/.vim/.vimrc.appearance
 
+"================================================================
+" encoding
+"================================================================
+
 set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
-set fenc=utf-8
 set encoding=utf-8
 
 "================================================================
@@ -25,9 +28,6 @@ set hlsearch
 " ファイル末尾まで検索したら先頭に戻る
 set wrapscan
 
-" Esc連打でハイライトを消す
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
-
 "================================================================
 " moving
 "================================================================
@@ -37,7 +37,6 @@ set matchpairs+=<:>
 
 " matchitを有効化（rubyのコードブロックに対応させる）
 if !exists('loaded_matchit')
-  " matchitを有効化
   runtime macros/matchit.vim
 endif
 
@@ -51,9 +50,18 @@ let g:user_emmet_expandabbr_key = '<C-e>'
 " tab
 "================================================================
 
-nnoremap [tab] <Nop>
+" | モード                                 | 再割当無し | 再割当有り |
+" | ---                                    | ---        | ---        |
+" | ノーマルモード＋ビジュアルモード       | noremap    | map        |
+" | コマンドラインモード＋インサートモード | noremap!   | map!       |
+" | ノーマルモード                         | nnoremap   | nmap       |
+" | ビジュアル(選択)モード                 | vnoremap   | vmap       |
+" | コマンドラインモード                   | cnoremap   | cmap       |
+" | インサート(挿入)モード                 | inoremap   | imap       |
+
 nmap t [tab]
 
+" t+数字でタブ移動
 for n in range(1, 9)
     execute 'nnoremap <silent> [tab]'.n ':<C-u>tabnext'.n.'<CR>'
 endfor
@@ -94,16 +102,6 @@ set foldcolumn=4
 
 " 起動時は全開にする
 set foldlevel=99
-
-" Insert mode時にVimが暴走する対策
-" autocmd InsertEnter * if !exists('w:last_fdm')
-            " \| let w:last_fdm=&foldmethod
-            " \| setlocal foldmethod=manual
-            " \| endif
-" autocmd InsertLeave,WinLeave * if exists('w:last_fdm')
-            " \| let &l:foldmethod=w:last_fdm
-            " \| unlet w:last_fdm
-            " \| endif
 
 " 新しいウィンドウを下（右）に開く
 set splitbelow

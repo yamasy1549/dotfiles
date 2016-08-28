@@ -14,6 +14,9 @@ set t_Co=256
 " カラースキーム
 colorscheme hybrid
 
+" 暗い背景色
+set background=dark
+
 " 行番号を表示
 set number
 
@@ -53,3 +56,11 @@ set title
 
 " タブエリアを常に表示
 set showtabline=2
+
+" Vim 起動時 vim-indent-guides を自動起動
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
+let g:indent_guides_auto_colors=0
+let g:indent_guides_guide_size = 1
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#444433 ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333344 ctermbg=darkgray
