@@ -9,3 +9,5 @@
     ui = true
 [ghq]
     root = ~/Projects
+[alias]
+    open = browse
