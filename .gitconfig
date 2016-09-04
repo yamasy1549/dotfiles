@@ -7,3 +7,5 @@
     excludesfile = ~/.gitignore_global
 [color]
     ui = true
+[ghq]
+    root = ~/Projects
