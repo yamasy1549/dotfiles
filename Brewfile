@@ -4,6 +4,13 @@
 cask_args appdir: '/Applications'
 
 # ================================================================
+# tap
+# ================================================================
+
+tap 'caskroom/cask'
+tap 'caskroom/fonts'
+
+# ================================================================
 # formulas
 # ================================================================
 
@@ -18,7 +25,7 @@ brew 'go'
 brew 'gcc'
 
 brew 'jq'
-brew 'gsed'
+brew 'gnu-sed'
 brew 'curl'
 brew 'tree'
 brew 'peco'
@@ -33,6 +40,10 @@ brew 'pngquant'
 brew 'gnuplot', args: ['with-x', 'latex']
 
 brew 'chromedriver'
+
+brew 'mas'
+
+brew 'ricty', args: ['vim-powerline']
 
 # ================================================================
 # mas
@@ -88,3 +99,13 @@ cask 'github-desktop'
 cask 'kindle'
 cask 'licecap'
 cask 'skype'
+
+cask 'font-fontawesome'
+cask 'font-material-icons'
+cask 'font-inconsolata'
+cask 'font-m-plus'
+cask 'font-rounded-m-plus'
+cask 'font-noto-sans-cjk-jp'
+cask 'font-raleway'
+cask 'font-raleway-dots'
+cask 'font-ricty-diminished'
