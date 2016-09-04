@@ -20,9 +20,10 @@ brew 'zsh-completions'
 brew 'vim', args: ['with-lua']
 brew 'tmux'
 
-brew 'lua'
-brew 'go'
 brew 'gcc'
+brew 'go'
+brew 'lua'
+brew 'pyenv'
 
 brew 'jq'
 brew 'gnu-sed'
