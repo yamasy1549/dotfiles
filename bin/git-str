@@ -1,0 +1,15 @@
+#!/bin/sh
+if [ $# -gt 0 ]; then
+    args=()
+    while [ "$1" != "" ]
+    do
+        args+=($(git status --porcelain | awk '{ print $2 }' | head -n $1 | tail -n 1))
+        shift
+    done
+
+    git reset HEAD --quiet ${args[@]}
+    git-st
+else
+    exit 1
+fi
+
