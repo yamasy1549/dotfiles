@@ -170,6 +170,8 @@ alias gd="git std"
 alias gsd="git std"
 alias ga="git sta"
 alias gsa="git sta"
+alias gp="git push"
+alias gpo="git push origin"
 
 # mkdirで一気に階層を作る
 alias mkdir="mkdir -p"
