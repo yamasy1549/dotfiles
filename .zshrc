@@ -1,15 +1,12 @@
 eval "$(rbenv init -)"
 
 # -------------------------------------
-# 環境変数
+# env
 # -------------------------------------
 
 # SSHで接続した先で日本語が使えるようにする
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-
-# lsしたときの色
-# export LSCOLORS=gxfxcxdxbxegedabagacad
 
 export TERM=xterm-256color
 
@@ -27,12 +24,11 @@ export PGDATA=/usr/local/var/postgres
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
 # -------------------------------------
-# zshのオプション
+# zsh options
 # -------------------------------------
 
 ## 補完機能の強化
 autoload -U compinit
-compinit
 
 autoload -U zmv
 
@@ -47,9 +43,6 @@ setopt prompt_subst
 
 ## 直前と同じコマンドをヒストリに追加しない
 setopt hist_ignore_dups
-
-# cd -[tab]で過去のディレクトリにひとっ飛びできるようにする
-setopt auto_pushd
 
 # ディレクトリ名を入力するだけでcdできるようにする
 setopt auto_cd
@@ -165,13 +158,18 @@ bindkey "^R" history-incremental-search-backward
 # -------------------------------------
 
 alias g="git"
+alias gb="git branch"
+alias gcm="git commit -m"
+alias gcma="git commit --amend"
+alias gcmi="git commit --allow-empty -m 'Initial commit'"
+alias gco="git checkout"
+alias gcb="git checkout -b"
+alias gr="git rebase"
 alias gs="git st"
 alias gd="git std"
 alias gsd="git std"
 alias ga="git sta"
 alias gsa="git sta"
-alias gc="git commit"
-alias gcm="git commit -m"
 
 # mkdirで一気に階層を作る
 alias mkdir="mkdir -p"
