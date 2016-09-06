@@ -107,7 +107,7 @@ cask 'font-m-plus'
 cask 'font-rounded-m-plus'
 cask 'font-noto-sans-cjk-jp'
 cask 'font-raleway'
-cask 'font-raleway-dots'
+# cask 'font-raleway-dots'
 cask 'font-ricty-diminished'
 
 # after mactex
