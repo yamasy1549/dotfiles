@@ -6,6 +6,7 @@ cask_args appdir: '/Applications'
 
 tap 'sanemat/font'
 tap 'caskroom/cask'
+tap 'caskroom/versions'
 tap 'caskroom/fonts'
 
 # ================================================================
@@ -65,7 +66,7 @@ cask 'java'
 
 cask 'android-file-transfer'
 cask 'appcleaner'
-# cask 'alfred'
+cask 'alfred2'
 cask 'bettertouchtool'
 cask 'caffeine'
 cask 'dash'
@@ -113,4 +114,4 @@ cask 'font-raleway'
 cask 'font-ricty-diminished'
 
 # after mactex
-brew 'gnuplot', args: ['with-x', 'latex']
+# brew 'gnuplot', args: ['with-x', 'latex']
