@@ -7,4 +7,5 @@ done
 
 ln -snfv "$DOTPATH/bin" "$HOME/bin"
 
-DOTPATH=$DOTPATH ./initialize.sh
+brew tap Homebrew/bundle
+brew bundle
