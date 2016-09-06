@@ -1,12 +1,10 @@
-# brew tap Homebrew/bundle
-# brew bundle
-
 cask_args appdir: '/Applications'
 
 # ================================================================
 # tap
 # ================================================================
 
+tap 'sanemat/font'
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
 
@@ -38,7 +36,6 @@ brew 'tig'
 brew 'heroku-toolbelt'
 brew 'imagemagick'
 brew 'pngquant'
-brew 'gnuplot', args: ['with-x', 'latex']
 
 brew 'chromedriver'
 
@@ -110,3 +107,6 @@ cask 'font-noto-sans-cjk-jp'
 cask 'font-raleway'
 cask 'font-raleway-dots'
 cask 'font-ricty-diminished'
+
+# after mactex
+brew 'gnuplot', args: ['with-x', 'latex']
