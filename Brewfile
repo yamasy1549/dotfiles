@@ -23,6 +23,8 @@ brew 'gcc'
 brew 'go'
 brew 'lua'
 brew 'pyenv'
+brew 'rbenv'
+brew 'ruby-build'
 
 brew 'jq'
 brew 'gnu-sed'
