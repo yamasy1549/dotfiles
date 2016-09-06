@@ -65,7 +65,7 @@ cask 'java'
 
 cask 'android-file-transfer'
 cask 'appcleaner'
-cask 'alfred2'
+# cask 'alfred'
 cask 'bettertouchtool'
 cask 'caffeine'
 cask 'dash'
@@ -78,12 +78,12 @@ cask 'flash-player'
 
 cask 'aquaterm'
 cask 'mactex'
-cask 'pandoc'
+# cask 'pandoc'
 cask 'skim'
 cask 'xquartz'
 
-cask 'adobe-creative-cloud'
 cask 'adobe-illustrator-cc-ja'
+cask 'adobe-creative-cloud'
 cask 'sketch'
 cask 'zeplin'
 
@@ -108,6 +108,8 @@ cask 'font-rounded-m-plus'
 cask 'font-noto-sans-cjk-jp'
 cask 'font-raleway'
 # cask 'font-raleway-dots'
+#
+# cask 'java'
 cask 'font-ricty-diminished'
 
 # after mactex
