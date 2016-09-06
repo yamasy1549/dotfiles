@@ -61,6 +61,8 @@ mas 'Sync',           id: 1076860635
 cask 'google-chrome'
 cask 'firefoxdeveloperedition-ja'
 
+cask 'java'
+
 cask 'android-file-transfer'
 cask 'appcleaner'
 cask 'alfred2'
