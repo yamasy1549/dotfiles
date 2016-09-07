@@ -26,6 +26,10 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 
+# node
+export PATH=$PATH:$HOME/.ndenv/bin
+eval "$(ndenv init -)"
+
 # -------------------------------------
 # zsh options
 # -------------------------------------
