@@ -14,8 +14,8 @@ export TERM=xterm-256color
 export EDITOR=vim
 
 # ページャ
-export PAGER=/usr/local/bin/vimpager
-export MANPAGER=/usr/local/bin/vimpager
+export PAGER=cat
+export MANPAGER=less
 
 export PATH=$HOME/bin:$PATH
 
