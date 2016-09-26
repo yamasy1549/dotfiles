@@ -197,14 +197,34 @@ bindkey '^z' source_zshrc
 
 # pecoでcd
 function cdp {
-    local dir="$( find . -maxdepth 1 -type d | sed -e 's;\./;;' | peco )"
-    if [ ! -z "$dir" ] ; then
-        cd "$dir"
-    fi
+  local dir="$( find . -maxdepth 1 -type d | sed -e 's;\./;;' | peco )"
+  if [ ! -z "$dir" ] ; then
+    cd "$dir"
+  fi
 }
 
+# GitHubのリポジトリに移動またはclone
+function my_repos() {
+  local user=`git config --get user.name`
+  local token=`git config --get github.token`
+
+  local myrepo=$(curl -s https://api.github.com/users/$user/repos | jq -r '.[].full_name')
+  local orgrepo=$(curl -s -H "Authorization: token $token" https://api.github.com/user/repos | jq -r '.[].full_name')
+  local repo=$( echo "$myrepo $orgrepo" | peco --query "$LBUFFER")
+  local selected_dir=~/Projects/github.com/$repo
+
+  if [ -d $selected_dir ]; then
+    BUFFER="cd $selected_dir"
+  else
+    BUFFER="hub clone $repo $selected_dir"
+  fi
+  zle accept-line
+}
+zle -N my_repos
+bindkey '^[m' my_repos
+
 # 手元でリポジトリを作成してpush
-function ghq-new() {
+function ghq-new {
   local root=`ghq root`
   local user=`git config --get user.name`
   if [ -z "$user" ]; then
@@ -227,7 +247,7 @@ function ghq-new() {
 }
 
 # ghq x peco
-function peco_ghq_list () {
+function peco_ghq_list {
   local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
     BUFFER="cd ${selected_dir}"
