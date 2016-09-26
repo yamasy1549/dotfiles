@@ -72,7 +72,7 @@ function peco-select-history() {
     fi
     BUFFER=$(\history -n 1 | eval $tac | peco --query "$LBUFFER")
     CURSOR=$#BUFFER
-    zle clear-screen
+    zle accept-line
 }
 zle -N peco-select-history
 bindkey '^r' peco-select-history
@@ -187,6 +187,13 @@ alias gpo="git push origin"
 
 # cdしたあとで、自動的に ls する
 function chpwd() { ls }
+
+function source_zshrc {
+  BUFFER="source ~/.zshrc"
+  zle accept-line
+}
+zle -N source_zshrc
+bindkey '^z' source_zshrc
 
 # pecoでcd
 function cdp {
