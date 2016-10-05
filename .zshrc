@@ -296,8 +296,6 @@ if [ -z $TMUX ] ; then
     tmux new-session \; source-file ~/.tmux/new-session
 fi
 
-eval `dircolors -b ~/.dir_colors`
-
 if [ -e /usr/local/share/zsh-completions ]; then
     fpath=(/usr/local/share/zsh-completions $fpath)
 fi
