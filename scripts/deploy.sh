@@ -7,5 +7,8 @@ done
 
 ln -snfv "$DOTPATH/bin" "$HOME/bin"
 
+# XCode
+sudo xcodebuild -license accept
+
 brew tap Homebrew/bundle
 brew bundle
