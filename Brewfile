@@ -4,10 +4,8 @@ cask_args appdir: '/Applications'
 # tap
 # ================================================================
 
-tap 'sanemat/font'
 tap 'caskroom/cask'
 tap 'caskroom/versions'
-tap 'caskroom/fonts'
 
 # ================================================================
 # formulas
@@ -53,8 +51,6 @@ brew 'imagemagick'
 brew 'pngquant'
 
 brew 'chromedriver'
-
-brew 'ricty', args: ['vim-powerline']
 
 brew 'mas'
 
@@ -115,7 +111,6 @@ cask 'licecap'
 cask 'skype'
 
 cask 'java'
-cask 'font-ricty-diminished'
 
 # after mactex
 brew 'gnuplot', args: ['with-x', 'latex']
