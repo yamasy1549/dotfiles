@@ -71,8 +71,6 @@ mas 'Slack',          id: 803453959
 cask 'google-chrome'
 cask 'firefox', args: { 'language': 'ja' }
 
-cask 'java'
-
 cask 'android-file-transfer'
 cask 'appcleaner'
 cask 'alfred2'
