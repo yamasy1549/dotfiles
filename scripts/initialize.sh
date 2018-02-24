@@ -12,12 +12,6 @@ if ! is_exists "brew"; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-if is_installed "ricty" && [ `find ~/Library/Fonts -name "Ricty*.ttf" | wc -l` -eq 0 ]; then
-    args=$(brew info ricty | grep "Ricty\*.ttf" | sed -e "s/.*cp -f \(.*\) \(.*\)/\1 \2/")
-    eval "cp -f $args"
-    fc-cache -vf
-fi
-
 if is_installed "zsh" && [ $SHELL != `which zsh` ]; then
     echo current shell: $SHELL
     echo Please exec
