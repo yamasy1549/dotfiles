@@ -2,7 +2,7 @@
 
 set -eu
 
-DOTPATH=~/.dotfiles
+DOTPATH=~/dotfiles
 GITHUB_URL="https://github.com/yamasy1549/dotfiles"
 
 function has() {
@@ -10,7 +10,7 @@ function has() {
 }
 
 if has "git"; then
-    git clone --recursive "$GITHUB_URL" "$DOTPATH"
+    git clone "$GITHUB_URL" "$DOTPATH"
 
 elif has "curl" || has "wget"; then
     tarball="$GITHUB_URL/archive/master.tar.gz"
