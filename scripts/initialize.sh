@@ -22,15 +22,3 @@ fi
 if ! is_exists "$HOME/.tmux/plugins/tpm/tpm"; then
     git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
-
-if is_exists "node" && `which node | grep -qF .ndenv`; then
-    echo "- [x] node"
-else
-    echo "- [ ] node"
-fi
-
-if is_exists "ruby" && `which ruby | grep -qF .rbenv`; then
-    echo "- [x] ruby"
-else
-    echo "- [ ] ruby"
-fi
