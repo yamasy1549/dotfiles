@@ -69,7 +69,7 @@ mas 'Slack',          id: 803453959
 # ================================================================
 
 cask 'google-chrome'
-cask 'firefoxdeveloperedition-ja'
+cask 'firefox', args: { 'language': 'ja' }
 
 cask 'java'
 
