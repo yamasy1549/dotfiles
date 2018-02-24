@@ -60,7 +60,6 @@ brew 'mas'
 
 mas 'The Unarchiver', id: 425424353
 mas 'YoruFukurou',    id: 428834068
-mas 'Xcode',          id: 497799835
 mas 'LadioCast',      id: 425424353
 mas 'LINE',           id: 539883307
 mas 'Slack',          id: 803453959
