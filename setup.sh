@@ -38,5 +38,5 @@ if [ $? -ne 0 ]; then
     die "not found: $DOTPATH"
 fi
 
-DOTPATH=$DOTPATH ./scripts/initialize.sh
+./scripts/initialize.sh
 DOTPATH=$DOTPATH ./scripts/deploy.sh
