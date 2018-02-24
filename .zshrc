@@ -23,9 +23,15 @@ export PGDATA=/usr/local/var/postgres
 
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
-export GOPATH=~/go
+# tree_tagger
+export PATH="$PATH":/usr/local/lib/tree_tagger/cmd
+export PATH="$PATH":/usr/local/lib/tree_tagger/bin
+
+export GOPATH=$HOME
+export PYTHONSTARTUP=~/.pythonstartup
 export PATH=$PATH:$GOPATH/bin
 
+export PATH=/usr/local/opt/gettext/bin:$PATH
 
 # -------------------------------------
 # zsh options
@@ -139,6 +145,11 @@ fi
 # alias
 # -------------------------------------
 
+alias py="python3"
+alias pip="pip3"
+
+alias vm="~/Documents/VM_share"
+
 # -n 行数表示, -I バイナリファイル無視, svn関係のファイルを無視
 alias grep="grep --color -n -I"
 alias gitlog="git log --graph --oneline --all --branches --decorate"
@@ -167,6 +178,9 @@ alias mkdir="mkdir -p"
 # treeでnode_modulesを表示しない
 alias tree="tree -I node_modules"
 
+# yarn
+alias yarm="yarn"
+
 # git
 alias g="git"
 alias git="hub"
@@ -176,6 +190,8 @@ alias gcma="git commit --amend"
 alias gcmi="git commit --allow-empty -m 'Initial commit'"
 alias gco="git checkout"
 alias gcb="git checkout -b"
+alias gme="git merge"
+alias gmer="git merge"
 alias gr="git rebase"
 alias gs="git st"
 alias gd="git std"
