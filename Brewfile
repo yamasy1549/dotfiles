@@ -114,15 +114,6 @@ cask 'kindle'
 cask 'licecap'
 cask 'skype'
 
-cask 'font-fontawesome'
-cask 'font-material-icons'
-cask 'font-inconsolata'
-cask 'font-m-plus'
-cask 'font-rounded-m-plus'
-cask 'font-noto-sans-cjk-jp'
-cask 'font-raleway'
-cask 'font-raleway-dots'
-
 cask 'java'
 cask 'font-ricty-diminished'
 
