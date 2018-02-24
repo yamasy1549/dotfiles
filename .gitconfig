@@ -1,13 +1,31 @@
-[user]
-    name = yamasy1549
-    email = sanae@yamasy.info
+[include]
+  path = ~/.gitconfig.local
+
 [core]
     autocrlf = input
     editor = vim
     excludesfile = ~/.gitignore_global
+
 [color]
     ui = true
+
 [ghq]
     root = ~/Projects
+
 [alias]
     open = browse
+
+[rebase]
+    autosquash = true
+
+[diff]
+    tool = vimdiff
+
+[difftool]
+    prompt = false
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
