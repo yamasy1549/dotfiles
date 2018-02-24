@@ -14,27 +14,39 @@ tap 'caskroom/fonts'
 # ================================================================
 
 brew 'git'
+brew 'git-lfs'
 brew 'zsh', args: ['disable-etc-dir']
 brew 'zsh-completions'
-brew 'vim', args: ['with-lua']
+brew 'vim', args: ['with-lua', 'with-override-system-vi']
 brew 'tmux'
+
+brew 'hub'
+brew 'ghq'
+brew 'tig'
 
 brew 'gcc'
 brew 'go'
 brew 'lua'
-brew 'pyenv'
 brew 'rbenv'
 brew 'ruby-build'
+brew 'python'
+brew 'python3'
+
+brew 'docker'
+brew 'docker-compose'
+brew 'docker-machine'
+
+brew 'mongodb'
+brew 'mysql'
 
 brew 'jq'
 brew 'gnu-sed'
 brew 'curl'
 brew 'tree'
 brew 'peco'
+brew 'coreutils'
 
-brew 'hub'
-brew 'ghq'
-brew 'tig'
+brew 'nkf'
 
 brew 'heroku-toolbelt'
 brew 'imagemagick'
@@ -42,9 +54,9 @@ brew 'pngquant'
 
 brew 'chromedriver'
 
-brew 'mas'
-
 brew 'ricty', args: ['vim-powerline']
+
+brew 'mas'
 
 # ================================================================
 # mas
@@ -53,9 +65,9 @@ brew 'ricty', args: ['vim-powerline']
 mas 'The Unarchiver', id: 425424353
 mas 'YoruFukurou',    id: 428834068
 mas 'Xcode',          id: 497799835
+mas 'LadioCast',      id: 425424353
 mas 'LINE',           id: 539883307
 mas 'Slack',          id: 803453959
-mas 'Sync',           id: 1076860635
 
 # ================================================================
 # cask
@@ -81,7 +93,6 @@ cask 'flash-player'
 
 cask 'aquaterm'
 cask 'mactex'
-# cask 'pandoc'
 cask 'skim'
 cask 'xquartz'
 
@@ -110,10 +121,10 @@ cask 'font-m-plus'
 cask 'font-rounded-m-plus'
 cask 'font-noto-sans-cjk-jp'
 cask 'font-raleway'
-# cask 'font-raleway-dots'
-#
-# cask 'java'
+cask 'font-raleway-dots'
+
+cask 'java'
 cask 'font-ricty-diminished'
 
 # after mactex
-# brew 'gnuplot', args: ['with-x', 'latex']
+brew 'gnuplot', args: ['with-x', 'latex']
