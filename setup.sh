@@ -39,3 +39,4 @@ if [ $? -ne 0 ]; then
 fi
 
 DOTPATH=$DOTPATH ./scripts/initialize.sh
+DOTPATH=$DOTPATH ./scripts/deploy.sh
