@@ -80,16 +80,15 @@ cask 'dash'
 cask 'google-japanese-ime'
 cask 'iterm2'
 cask 'karabiner'
+cask 'cmd-eikana'
 
 cask 'silverlight'
 cask 'flash-player'
 
-cask 'aquaterm'
 cask 'mactex'
-cask 'skim'
 cask 'xquartz'
 
-cask 'adobe-illustrator-cc-ja'
+cask 'adobe-acrobat-reader'
 cask 'adobe-creative-cloud'
 cask 'sketch'
 cask 'zeplin'
@@ -102,12 +101,10 @@ cask 'sublime-text'
 cask 'vagrant'
 cask 'postgres'
 
-cask 'github-desktop'
 cask 'kindle'
 cask 'licecap'
 cask 'skype'
-
-cask 'java'
+cask 'discord'
 
 # after mactex
-brew 'gnuplot', args: ['with-x', 'latex']
+brew 'gnuplot', args: ['with-x11', 'latex']
