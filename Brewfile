@@ -17,6 +17,7 @@ brew 'zsh', args: ['disable-etc-dir']
 brew 'zsh-completions'
 brew 'vim', args: ['with-lua', 'with-override-system-vi']
 brew 'tmux'
+brew 'reattach-to-user-namespace'
 
 brew 'hub'
 brew 'ghq'

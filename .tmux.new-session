@@ -1,0 +1,16 @@
+new-window -1st
+
+splitw -d
+splitw -h -d
+splitw -h -d
+resize-pane -U 7
+
+select-pane -R
+
+select-pane -R
+splitw -h -d
+
+select-pane -R
+clock
+
+select-pane -D
