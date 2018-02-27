@@ -8,6 +8,7 @@ eval "$(rbenv init -)"
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# 色空間
 export TERM=xterm-256color
 
 # エディタ
@@ -19,40 +20,57 @@ export MANPAGER=less
 
 export PATH=$HOME/bin:$PATH
 
-export PGDATA=/usr/local/var/postgres
-
+# GNU系のコマンドを使う
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
-# tree_tagger
-export PATH="$PATH":/usr/local/lib/tree_tagger/cmd
-export PATH="$PATH":/usr/local/lib/tree_tagger/bin
+# Postgres
+export PGDATA=/usr/local/var/postgres
 
-export GOPATH=$HOME
+#Python
 export PYTHONSTARTUP=~/.pythonstartup
+
+# Go
+export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 
-export PATH=/usr/local/opt/gettext/bin:$PATH
+
+# -------------------------------------
+# パス
+# -------------------------------------
+
+# 重複する要素を自動的に削除
+typeset -U path cdpath fpath manpath
+
+path=(
+    $HOME/bin(N-/)
+    /usr/local/bin(N-/)
+    /usr/local/sbin(N-/)
+    $path
+)
+
 
 # -------------------------------------
 # zsh options
 # -------------------------------------
 
-## 補完機能の強化
+# 補完機能の強化
 autoload -U compinit
+if [ -e /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
 
+# mv をいい感じにやる
 autoload -U zmv
+alias zmv='noglob zmv -W'
 
-## 入力しているコマンド名が間違っている場合にもしかして：を出す。
+# 入力しているコマンド名が間違っている場合にもしかして：を出す。
 setopt correct
 
 # ビープを鳴らさない
 setopt nobeep
 
-## 色を使う
+# 色を使う
 setopt prompt_subst
-
-## 直前と同じコマンドをヒストリに追加しない
-setopt hist_ignore_dups
 
 # ディレクトリ名を入力するだけでcdできるようにする
 setopt auto_cd
@@ -68,8 +86,11 @@ setopt interactive_comments
 # history
 # -------------------------------------
 
+# 同じ履歴を省く
 setopt hist_ignore_all_dups
-function peco-select-history() {
+
+# Ctrl+R で履歴 w/ peco
+function peco_select_history() {
     local tac
     if which tac > /dev/null; then
         tac="tac"
@@ -80,22 +101,9 @@ function peco-select-history() {
     CURSOR=$#BUFFER
     zle accept-line
 }
-zle -N peco-select-history
-bindkey '^r' peco-select-history
+zle -N peco_select_history
+bindkey '^r' peco_select_history
 
-# -------------------------------------
-# パス
-# -------------------------------------
-
-# 重複する要素を自動的に削除
-typeset -U path cdpath fpath manpath
-
-path=(
-    $HOME/bin(N-/)
-    /usr/local/bin(N-/)
-    /usr/local/sbin(N-/)
-    $path
-)
 
 # -------------------------------------
 # prompt
@@ -116,13 +124,11 @@ zstyle ":vcs_info:bzr:*" use-simple true
 
 zstyle ":vcs_info:*" max-exports 6
 
-if is-at-least 4.3.10; then
-    zstyle ":vcs_info:git:*" check-for-changes true # commitしていないのをチェック
-    zstyle ":vcs_info:git:*" stagedstr "<S>"
-    zstyle ":vcs_info:git:*" unstagedstr "<U>"
-    zstyle ":vcs_info:git:*" formats "(%b) %c%u"
-    zstyle ":vcs_info:git:*" actionformats "(%s)-[%b|%a] %c%u"
-fi
+zstyle ":vcs_info:git:*" check-for-changes true # commitしていないのをチェック
+zstyle ":vcs_info:git:*" stagedstr "<S>"
+zstyle ":vcs_info:git:*" unstagedstr "<U>"
+zstyle ":vcs_info:git:*" formats "(%b) %c%u"
+zstyle ":vcs_info:git:*" actionformats "(%s)-[%b|%a] %c%u"
 
 function vcs_prompt_info() {
     LANG=en_US.UTF-8 vcs_info
@@ -137,9 +143,12 @@ PROMPT+=$'\n'
 PROMPT+="%% "
 RPROMPT="[%*]"
 
+# ls した時の色
+eval $(dircolors $HOME/dotfiles/zsh/gochiusa.dircolors)
 if [ -n "$LS_COLORS" ]; then
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
+
 
 # -------------------------------------
 # alias
@@ -150,15 +159,21 @@ alias pip="pip3"
 
 alias vm="~/Documents/VM_share"
 
-# -n 行数表示, -I バイナリファイル無視, svn関係のファイルを無視
+# -n 行数表示
+# -I バイナリファイル無視
 alias grep="grep --color -n -I"
-alias gitlog="git log --graph --oneline --all --branches --decorate"
 
-alias ls="gls --color=auto" # lsに色を付ける
+# ls に色を付ける
+alias ls="gls --color=auto"
 alias la="gls --color=auto -a"
+alias ll="gls --color=auto -l"
 
-# tree
-alias tree="tree -NC" # N: 文字化け対策, C:色をつける
+# N 文字化け対策
+# C 色をつける
+alias tree="tree -NC"
+
+# treeでnode_modulesを表示しない
+alias tree="tree -I node_modules"
 
 # historyに時刻表示
 alias history='history -E'
@@ -169,19 +184,20 @@ alias aout="./a.out"
 # bundle exec
 alias be="bundle exec"
 
-# exit
-alias :q="exit"
-
 # mkdirで一気に階層を作る
 alias mkdir="mkdir -p"
-
-# treeでnode_modulesを表示しない
-alias tree="tree -I node_modules"
 
 # yarn
 alias yarm="yarn"
 
+# exit
+alias :q="exit"
+
+
+# -------------------------------------
 # git
+# -------------------------------------
+
 alias g="git"
 alias git="hub"
 alias gb="git branch"
@@ -200,69 +216,9 @@ alias ga="git sta"
 alias gsa="git sta"
 alias gp="git push"
 alias gpo="git push origin"
+alias gl="git log --graph --oneline --all --branches --decorate"
 
-# cdしたあとで、自動的に ls する
-function chpwd() { ls }
-
-function source_zshrc {
-  BUFFER="source ~/.zshrc"
-  zle accept-line
-}
-zle -N source_zshrc
-bindkey '^z' source_zshrc
-
-# pecoでcd
-function cdp {
-  local dir="$( find . -maxdepth 1 -type d | sed -e 's;\./;;' | peco )"
-  if [ ! -z "$dir" ] ; then
-    cd "$dir"
-  fi
-}
-
-# GitHubのリポジトリに移動またはclone
-function my_repos() {
-  local user=`git config --get user.name`
-  local token=`git config --get github.token`
-
-  local myrepo=$(curl -s https://api.github.com/users/$user/repos | jq -r '.[].full_name')
-  local orgrepo=$(curl -s -H "Authorization: token $token" https://api.github.com/user/repos | jq -r '.[].full_name')
-  local repo=$( echo "$myrepo $orgrepo" | peco --query "$LBUFFER")
-  local selected_dir=~/Projects/github.com/$repo
-
-  if [ -d $selected_dir ]; then
-    BUFFER="cd $selected_dir"
-  else
-    BUFFER="hub clone $repo $selected_dir"
-  fi
-  zle accept-line
-}
-zle -N my_repos
-bindkey '^[m' my_repos
-
-# 手元でリポジトリを作成してpush
-function ghq-new {
-  local root=`ghq root`
-  local user=`git config --get user.name`
-  if [ -z "$user" ]; then
-    echo "you need to set user.name"
-    echo "git config --global user.name YOUR_GITHUB_USER_NAME"
-    return 1
-  fi
-  local name=$1
-  local repo="$root/github.com/$user/$name"
-  local remote_url="git@github.com:$user/$name.git"
-  if [ -e "$repo" ]; then
-    echo "$repo is already exists."
-    return 1
-  fi
-  git init $repo
-  cd $repo
-  git remote add origin $remote_url
-  git commit --allow-empty -m 'Initial commit'
-  git push -u origin master
-}
-
-# ghq x peco
+# ghq x peco で ~/Projects以下のリポジトリに移動
 function peco_ghq_list {
   local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
@@ -274,28 +230,23 @@ function peco_ghq_list {
 zle -N peco_ghq_list
 bindkey '^]' peco_ghq_list
 
-# -------------------------------------
-# keybind
-# -------------------------------------
-
-bindkey -e
-
-function cdup() {
-   echo
-   cd ..
-   zle reset-prompt
-}
-zle -N cdup
-bindkey '^K' cdup
 
 # -------------------------------------
 # その他
 # -------------------------------------
 
-if [ -z $TMUX ] ; then
-    tmux new-session \; source-file ~/.tmux/new-session
-fi
+# cdしたあとで、自動的にlsする
+function chpwd() { ls }
 
-if [ -e /usr/local/share/zsh-completions ]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
+# ~/.zshrcの読み込み
+function source_zshrc {
+  BUFFER="source ~/.zshrc"
+  zle accept-line
+}
+zle -N source_zshrc
+bindkey '^z' source_zshrc
+
+if [ -z $TMUX ] ; then
+    tmux new-session
+    source-file ~/.tmux.new-session
 fi
