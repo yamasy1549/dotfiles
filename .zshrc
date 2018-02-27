@@ -8,9 +8,6 @@ eval "$(rbenv init -)"
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# 色空間
-export TERM=xterm-256color
-
 # エディタ
 export EDITOR=vim
 
@@ -106,16 +103,28 @@ bindkey '^r' peco_select_history
 
 
 # -------------------------------------
+# colors
+# -------------------------------------
+
+# 色空間
+export TERM=xterm-256color
+
+# e.g. ${fg[red]}hogehoge${reset_color}
+autoload -Uz colors; colors
+
+# ls した時の色
+eval $(dircolors $HOME/dotfiles/zsh/gochiusa.dircolors)
+if [ -n "$LS_COLORS" ]; then
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+fi
+
+
+# -------------------------------------
 # prompt
 # -------------------------------------
 
-autoload -U promptinit; promptinit
-autoload -Uz colors; colors
 autoload -Uz vcs_info
-autoload -Uz is-at-least
-autoload -U compinit; compinit
 
-# begin VCS
 zstyle ":vcs_info:*" enable git svn hg bzr
 zstyle ":vcs_info:*" formats "(%s)-[%b]"
 zstyle ":vcs_info:*" actionformats "(%s)-[%b|%a]"
@@ -132,22 +141,16 @@ zstyle ":vcs_info:git:*" actionformats "(%s)-[%b|%a] %c%u"
 
 function vcs_prompt_info() {
     LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && echo -n " %F{178}$vcs_info_msg_0_%f" # 黄色
+    [[ -n "$vcs_info_msg_0_" ]] && echo -n " ${fg[yellow]}$vcs_info_msg_0_${reset_color}"
 }
-# end VCS
 
 PROMPT=""
-PROMPT+="%F{070}%~%f" # 黄緑
+PROMPT+="${fg[green]}%~${reset_color}"
 PROMPT+="\$(vcs_prompt_info)"
 PROMPT+=$'\n'
 PROMPT+="%% "
-RPROMPT="[%*]"
-
-# ls した時の色
-eval $(dircolors $HOME/dotfiles/zsh/gochiusa.dircolors)
-if [ -n "$LS_COLORS" ]; then
-    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-fi
+# ずれるので、色指定を %{ %} で囲む
+RPROMPT="%{${fg[white]}%}[%*]%{${reset_color}%}"
 
 
 # -------------------------------------
