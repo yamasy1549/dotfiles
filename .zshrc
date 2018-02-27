@@ -238,6 +238,9 @@ bindkey '^]' peco_ghq_list
 # その他
 # -------------------------------------
 
+# Emacs風キーバインド
+bindkey -e
+
 # cdしたあとで、自動的にlsする
 function chpwd() { ls }
 
