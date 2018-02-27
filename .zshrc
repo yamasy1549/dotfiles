@@ -51,7 +51,7 @@ path=(
 # -------------------------------------
 
 # 補完機能の強化
-autoload -U compinit
+autoload -U compinit; compinit
 if [ -e /usr/local/share/zsh-completions ]; then
     fpath=(/usr/local/share/zsh-completions $fpath)
 fi
@@ -249,7 +249,8 @@ function source_zshrc {
 zle -N source_zshrc
 bindkey '^z' source_zshrc
 
+# tmux
+# TODO: うごかない
 if [ -z $TMUX ] ; then
-    tmux new-session
-    source-file ~/.tmux.new-session
+    tmux new-session \; source-file ~/.tmux.new-session
 fi
