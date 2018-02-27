@@ -29,6 +29,7 @@ brew 'rbenv'
 brew 'ruby-build'
 brew 'python'
 brew 'python3'
+brew 'readline'
 
 brew 'docker'
 brew 'docker-compose'
