@@ -113,7 +113,7 @@ export TERM=xterm-256color
 autoload -Uz colors; colors
 
 # ls した時の色
-eval $(dircolors $HOME/dotfiles/zsh/gochiusa.dircolors)
+eval $(dircolors $HOME/.zsh/gochiusa.dircolors)
 if [ -n "$LS_COLORS" ]; then
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi

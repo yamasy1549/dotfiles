@@ -121,6 +121,11 @@ if ! has "$HOME/.tmux/plugins/tpm/tpm"; then
     git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
 
+step "iTerm2, Zshの色設定ファイル準備"
+if ! has "$HOME/.zsh"; then
+    git clone https://github.com/yamasy1549/iTerm2-gochiusa $HOME/.zsh
+fi
+
 
 ##########
 # スクリプトのシンボリックリンクを貼る
