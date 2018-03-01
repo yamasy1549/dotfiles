@@ -112,18 +112,21 @@ brew bundle
 # Zshの準備
 ##########
 
-step "Zshの設定"
-echo `which zsh` | sudo tee -a /etc/shells
-chsh -s `which zsh`
-
-step "tmuxの設定"
-if ! has "$HOME/.tmux/plugins/tpm/tpm"; then
-    git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+zsh=$(which zsh)
+if [ ! `grep "$zsh" /etc/shells` ]; then
+    step "Zshの設定"
+    echo $zsh | sudo tee -a /etc/shells
+    chsh -s $zsh
 fi
 
-step "iTerm2, Zshの色設定ファイル準備"
-if ! has "$HOME/.zsh"; then
+if [ ! -d "$HOME/.zsh" ]; then
+    step "iTerm2, Zshの色設定ファイル準備"
     git clone https://github.com/yamasy1549/iTerm2-gochiusa $HOME/.zsh
+fi
+
+if [ ! -f "$HOME/.tmux/plugins/tpm/tpm" ]; then
+    step "tmuxの設定"
+    git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
 
 
