@@ -27,6 +27,18 @@ rbenv global $ruby_latest
 
 
 ##########
+# Pythonのインストール
+##########
+
+step "最新版のPython{2,3}系インストール"
+python2_latest=`pyenv install -l | /usr/bin/grep -e "\s\+2\+.[0-9]\+.[0-9]\+$" | tail -1 | tr -d ' '`
+python3_latest=`pyenv install -l | /usr/bin/grep -e "\s\+3\+.[0-9]\+.[0-9]\+$" | tail -1 | tr -d ' '`
+pyenv install -s $python2_latest
+pyenv install -s $python3_latest
+pyenv global $python3_latest
+
+
+##########
 # Node.jsのインストール
 ##########
 

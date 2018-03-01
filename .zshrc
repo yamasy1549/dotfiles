@@ -12,6 +12,21 @@ path=(
     $path
 )
 
+
+# -------------------------------------
+# XXenv
+# -------------------------------------
+
+# rbenv
+eval "$(rbenv init -)"
+
+# pyenv
+eval "$(pyenv init -)"
+
+# nodenv
+eval "$(nodenv init -)"
+
+
 # -------------------------------------
 # export
 # -------------------------------------
@@ -30,7 +45,13 @@ export MANPAGER=less
 export PATH=$HOME/bin:$PATH
 
 # rbenv
-export PATH="$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:$PATH"
+export PATH="$HOME/.rbenv/shims:$PATH"
+
+# pyenv
+export PATH="$HOME/.pyenv/shims:$PATH"
+
+# nodenv
+export PATH="$HOME/.nodenv/shims:$PATH"
 
 # GNU系のコマンドを使う
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
@@ -157,9 +178,6 @@ RPROMPT="%{${fg[white]}%}[%*]%{${reset_color}%}"
 # alias
 # -------------------------------------
 
-alias py="python3"
-alias pip="pip3"
-
 alias vm="~/Documents/VM_share"
 
 # -n 行数表示
@@ -232,17 +250,6 @@ function peco_ghq_list {
 }
 zle -N peco_ghq_list
 bindkey '^]' peco_ghq_list
-
-
-# -------------------------------------
-# XXenv
-# -------------------------------------
-
-# rbenv
-eval "$(rbenv init -)"
-
-# nodenv
-eval "$(nodenv init -)"
 
 
 # -------------------------------------
