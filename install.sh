@@ -1,3 +1,5 @@
+source $HOME/.zshrc
+
 ##########
 # 関数定義など
 ##########
@@ -19,6 +21,18 @@ function step() {
 ##########
 
 step "最新版のRubyインストール"
-rbenv init
-rbenv install -s `rbenv install -l | /usr/bin/grep -v - | tail -1`
-rbenv global `rbenv install -l | /usr/bin/grep -v - | tail -1`
+ruby_latest=`rbenv install -l | /usr/bin/grep -v - | tail -1 | tr -d ' '`
+rbenv install -s $ruby_latest
+rbenv global $ruby_latest
+
+
+##########
+# Node.jsのインストール
+##########
+
+step "最新版のNode.jsインストール"
+node_latest=`nodenv install -l | /usr/bin/grep -e "\s\+[0-9]\+.[0-9]\+.[0-9]\+$" | tail -1 | tr -d ' '`
+nodenv install -s $node_latest
+nodenv global $node_latest
+
+source $HOME/.zshrc

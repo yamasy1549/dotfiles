@@ -13,7 +13,7 @@ path=(
 )
 
 # -------------------------------------
-# env
+# export
 # -------------------------------------
 
 # SSHで接続した先で日本語が使えるようにする
@@ -235,6 +235,17 @@ bindkey '^]' peco_ghq_list
 
 
 # -------------------------------------
+# XXenv
+# -------------------------------------
+
+# rbenv
+eval "$(rbenv init -)"
+
+# nodenv
+eval "$(nodenv init -)"
+
+
+# -------------------------------------
 # その他
 # -------------------------------------
 
@@ -256,6 +267,3 @@ bindkey '^z' source_zshrc
 if [ -z $TMUX ] ; then
     tmux new-session \; source-file ~/.tmux.new-session
 fi
-
-# rbenv
-eval "$(rbenv init -)"
