@@ -1,4 +1,16 @@
-eval "$(rbenv init -)"
+# -------------------------------------
+# パス
+# -------------------------------------
+
+# 重複する要素を自動的に削除
+typeset -U path cdpath fpath manpath
+
+path=(
+    $HOME/bin(N-/)
+    /usr/local/bin(N-/)
+    /usr/local/sbin(N-/)
+    $path
+)
 
 # -------------------------------------
 # env
@@ -17,6 +29,9 @@ export MANPAGER=less
 
 export PATH=$HOME/bin:$PATH
 
+# rbenv
+export PATH="$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:$PATH"
+
 # GNU系のコマンドを使う
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
@@ -29,21 +44,6 @@ export PYTHONSTARTUP=~/.pythonstartup
 # Go
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
-
-
-# -------------------------------------
-# パス
-# -------------------------------------
-
-# 重複する要素を自動的に削除
-typeset -U path cdpath fpath manpath
-
-path=(
-    $HOME/bin(N-/)
-    /usr/local/bin(N-/)
-    /usr/local/sbin(N-/)
-    $path
-)
 
 
 # -------------------------------------
@@ -256,3 +256,6 @@ bindkey '^z' source_zshrc
 if [ -z $TMUX ] ; then
     tmux new-session \; source-file ~/.tmux.new-session
 fi
+
+# rbenv
+eval "$(rbenv init -)"
