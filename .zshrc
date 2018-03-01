@@ -253,7 +253,6 @@ zle -N source_zshrc
 bindkey '^z' source_zshrc
 
 # tmux
-# TODO: うごかない
 if [ -z $TMUX ] ; then
     tmux new-session \; source-file ~/.tmux.new-session
 fi
