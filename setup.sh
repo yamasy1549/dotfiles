@@ -134,11 +134,12 @@ fi
 # スクリプトのシンボリックリンクを貼る
 ##########
 
-step "自分で定義したスクリプトのシンボリックリンクを貼る"
+step "設定ファイルのシンボリックリンクを貼る"
 for f in .??*
 do
     [ "$f" = ".git" ] && continue
     ln -snfv "$DOTPATH/$f" "$HOME/$f"
 done
 
+step "自分で定義したスクリプトのシンボリックリンクを貼る"
 ln -snfv "$DOTPATH/bin" "$HOME/bin"
