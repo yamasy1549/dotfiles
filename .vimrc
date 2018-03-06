@@ -91,6 +91,9 @@ set backspace=indent,eol,start
 " 単語を補完する時の大文字小文字の無視
 set infercase
 
+" 補完
+set wildmenu
+
 " スワップファイルを作らない
 set noswapfile
 
