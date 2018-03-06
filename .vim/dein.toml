@@ -10,7 +10,7 @@ repo = 'Shougo/unite.vim'
 # ---------------------------------------------
 
 [[plugins]]
-repo = 'w0ng/vim-hybrid'
+repo = 'yamasy1549/gochiusa.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'

@@ -12,10 +12,7 @@ set guifont=Ricty:h12
 set t_Co=256
 
 " カラースキーム
-colorscheme hybrid
-
-" 暗い背景色
-set background=dark
+colorscheme gochiusa
 
 " 行番号を表示
 set number
