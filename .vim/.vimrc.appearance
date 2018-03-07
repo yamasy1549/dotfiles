@@ -6,7 +6,7 @@
 syntax on
 
 " フォントとサイズ
-set guifont=Ricty:h12
+set guifont=Ricty\ for\ Powerline:h12
 
 " 256色で表示
 set t_Co=256

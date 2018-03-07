@@ -6,6 +6,7 @@ cask_args appdir: '/Applications'
 
 tap 'caskroom/cask'
 tap 'caskroom/versions'
+tap 'sanemat/font'
 
 # ================================================================
 # formulas
@@ -52,6 +53,8 @@ brew 'imagemagick'
 brew 'pngquant'
 
 brew 'chromedriver'
+
+brew 'ricty', args: ['with-powerline']
 
 brew 'mas'
 
