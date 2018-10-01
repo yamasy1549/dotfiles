@@ -52,8 +52,6 @@ brew 'heroku-toolbelt'
 brew 'imagemagick'
 brew 'pngquant'
 
-brew 'chromedriver'
-
 brew 'ricty', args: ['with-powerline']
 
 brew 'mas'
@@ -62,7 +60,6 @@ brew 'mas'
 # mas
 # ================================================================
 
-mas 'The Unarchiver', id: 425424353
 mas 'YoruFukurou',    id: 428834068
 mas 'LadioCast',      id: 425424353
 mas 'LINE',           id: 539883307
@@ -90,13 +87,10 @@ cask 'cmd-eikana'
 cask 'silverlight'
 cask 'flash-player'
 
-cask 'mactex'
 cask 'xquartz'
 
 cask 'adobe-acrobat-reader'
 cask 'adobe-creative-cloud'
-cask 'sketch'
-cask 'zeplin'
 
 cask 'android-studio'
 cask 'arduino'
