@@ -4,25 +4,13 @@ cask_args appdir: '/Applications'
 # tap
 # ================================================================
 
-tap 'caskroom/cask'
-tap 'caskroom/versions'
+tap 'caskroom/cask-cask'
+tap 'caskroom/cask-versions'
 tap 'sanemat/font'
 
 # ================================================================
 # formulas
 # ================================================================
-
-brew 'git'
-brew 'git-lfs'
-brew 'zsh', args: ['disable-etc-dir']
-brew 'zsh-completions'
-brew 'vim', args: ['with-lua', 'with-override-system-vi']
-brew 'tmux'
-brew 'reattach-to-user-namespace'
-
-brew 'hub'
-brew 'ghq'
-brew 'tig'
 
 brew 'gcc'
 brew 'go'
@@ -33,6 +21,16 @@ brew 'rbenv'
 brew 'ruby-build'
 brew 'readline'
 
+brew 'git'
+brew 'git-lfs'
+brew 'zsh', args: ['disable-etc-dir']
+brew 'zsh-completions'
+brew 'vim'
+brew 'tmux' if OS.mac?
+brew 'reattach-to-user-namespace' if OS.mac?
+
+brew 'tig'
+
 brew 'docker-compose'
 brew 'docker-machine'
 
@@ -40,7 +38,7 @@ brew 'mongodb'
 brew 'mysql'
 
 brew 'jq'
-brew 'gnu-sed'
+brew 'gnu-sed' if OS.mac?
 brew 'curl'
 brew 'tree'
 brew 'peco'
@@ -54,16 +52,14 @@ brew 'pngquant'
 
 brew 'ricty', args: ['with-powerline']
 
-brew 'mas'
+brew 'mas' if OS.mac?
 
 # ================================================================
 # mas
 # ================================================================
 
-mas 'YoruFukurou',    id: 428834068
-mas 'LadioCast',      id: 425424353
-mas 'LINE',           id: 539883307
-mas 'Slack',          id: 803453959
+mas 'LINE',  id: 539883307
+mas 'Slack', id: 803453959
 
 # ================================================================
 # cask

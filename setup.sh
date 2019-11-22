@@ -95,17 +95,26 @@ fi
 # Homebrewの準備
 ##########
 
-if ! has "brew"; then
-    step "Homebrewインストール"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if [ "$(uname)" == "Darwin" ]; then
+    if ! has "brew" ; then
+        step "Homebrewインストール"
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+
+    step "XCodeライセンス同意"
+    sudo xcodebuild -license accept
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    if ! has "brew" ; then
+        step "Homebrewインストール"
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+    fi
 fi
 
-step "XCodeライセンス同意"
-sudo xcodebuild -license accept
-
-step "Brewfileに書いたパッケージをインストール"
-brew tap Homebrew/bundle
-brew bundle
+if has "brew" ; then
+    step "Brewfileに書いたパッケージをインストール"
+    brew tap Homebrew/bundle
+    brew bundle
+fi
 
 
 ##########
