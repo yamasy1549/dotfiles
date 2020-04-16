@@ -28,6 +28,16 @@ function step() {
 
 
 ##########
+# XCodeの準備
+##########
+
+if [ "$(uname -s)" = "Darwin" ]; then
+    step "XCodeライセンス同意"
+    sudo xcodebuild -license accept
+fi
+
+
+##########
 # dotfilesの準備
 ##########
 
@@ -56,7 +66,7 @@ if [ ! -d $DOTPATH ]; then
         mv -f dotfiles-master "$DOTPATH"
 
     else
-        die "curl or wget required."
+        die "curl or wget is required."
     fi
 fi
 
@@ -68,6 +78,21 @@ fi
 
 step "dotfilesのoriginをSSHの方に変える"
 git remote set-url origin $GITHUB_SSH_URL
+
+
+##########
+# スクリプトのシンボリックリンクを貼る
+##########
+
+step "設定ファイルのシンボリックリンクを貼る"
+for f in .??*
+do
+    [ "$f" = ".git" ] && continue
+    ln -snfv "$DOTPATH/$f" "$HOME/$f"
+done
+
+step "自分で定義したスクリプトのシンボリックリンクを貼る"
+ln -snfv "$DOTPATH/bin" "$HOME/bin"
 
 
 ##########
@@ -95,15 +120,12 @@ fi
 # Homebrewの準備
 ##########
 
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname -s)" = "Darwin" ]; then
     if ! has "brew" ; then
         step "Homebrewインストール"
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
-
-    step "XCodeライセンス同意"
-    sudo xcodebuild -license accept
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
     if ! has "brew" ; then
         step "Homebrewインストール"
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
@@ -140,15 +162,7 @@ fi
 
 
 ##########
-# スクリプトのシンボリックリンクを貼る
+# その他インストールが必要なもののインストール
 ##########
 
-step "設定ファイルのシンボリックリンクを貼る"
-for f in .??*
-do
-    [ "$f" = ".git" ] && continue
-    ln -snfv "$DOTPATH/$f" "$HOME/$f"
-done
-
-step "自分で定義したスクリプトのシンボリックリンクを貼る"
-ln -snfv "$DOTPATH/bin" "$HOME/bin"
+zsh ./install.sh

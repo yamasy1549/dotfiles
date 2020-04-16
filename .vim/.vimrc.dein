@@ -86,21 +86,10 @@ noremap <silent> [unite]t :<C-u>Unite tab<CR>
 noremap <silent> [unite]rc :<C-u>Unite rails/controller<CR>
 noremap <silent> [unite]rm :<C-u>Unite rails/model<CR>
 noremap <silent> [unite]rv :<C-u>Unite rails/view<CR>
-noremap <silent> [unite]ra :<C-u>Unite rails/asset<CR>
+noremap <silent> [unite]rj :<C-u>Unite rails/webpack<CR>
 noremap <silent> [unite]rd :<C-u>Unite rails/db<CR>
-noremap <silent> [unite]rb :<C-u>Unite rails/bundle<CR>
 noremap <silent> [unite]rs :<C-u>Unite rails/spec<CR>
-
-" ref: http://qiita.com/yuku_t/items/9263e6d9105ba972aea8
-function! DispatchUniteFileRecAsyncOrGit()
-  if isdirectory(getcwd()."/.git")
-    Unite file_rec/git
-  else
-    Unite file_rec/async
-  endif
-endfunction
-
-nnoremap <silent> [unite]f :<C-u>call DispatchUniteFileRecAsyncOrGit()<CR>
+noremap <silent> [unite]rt :<C-u>Unite rails/test<CR>
 
 "---------------------------------------------------------------
 " neocomplete

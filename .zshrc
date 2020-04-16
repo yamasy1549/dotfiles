@@ -42,8 +42,6 @@ export EDITOR=vim
 export PAGER=cat
 export MANPAGER=less
 
-export PATH=$HOME/bin:$PATH
-
 # rbenv
 export PATH="$HOME/.rbenv/shims:$PATH"
 
@@ -66,6 +64,8 @@ export PYTHONSTARTUP=~/.pythonstartup
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 
+# Imagemagick
+export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 
 # -------------------------------------
 # zsh options
@@ -178,8 +178,6 @@ RPROMPT="%{${fg[white]}%}[%*]%{${reset_color}%}"
 # alias
 # -------------------------------------
 
-alias vm="~/Documents/VM_share"
-
 # -n 行数表示
 # -I バイナリファイル無視
 alias grep="grep --color -n -I"
@@ -199,20 +197,20 @@ alias tree="tree -I node_modules"
 # historyに時刻表示
 alias history='history -E'
 
-# C言語
-alias aout="./a.out"
-
 # bundle exec
 alias be="bundle exec"
 
 # mkdirで一気に階層を作る
 alias mkdir="mkdir -p"
 
-# yarn
-alias yarm="yarn"
-
 # exit
 alias :q="exit"
+
+# gsedを使う
+alias sed="gsed"
+
+# treeで日本語ファイル名表示
+alias tree="tree -N"
 
 
 # -------------------------------------
@@ -220,7 +218,6 @@ alias :q="exit"
 # -------------------------------------
 
 alias g="git"
-alias git="hub"
 alias gb="git branch"
 alias gcm="git commit -m"
 alias gcma="git commit --amend"
@@ -238,18 +235,6 @@ alias gsa="git sta"
 alias gp="git push"
 alias gpo="git push origin"
 alias gl="git log --graph --oneline --all --branches --decorate"
-
-# ghq x peco で ~/Projects以下のリポジトリに移動
-function peco_ghq_list {
-  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
-    zle accept-line
-  fi
-  zle clear-screen
-}
-zle -N peco_ghq_list
-bindkey '^]' peco_ghq_list
 
 
 # -------------------------------------
