@@ -85,10 +85,9 @@ cask 'grammarly'
 cask 'kap'
 cask 'kindle'
 cask 'iterm2'
-cask 'mendeley'
+cask 'zotero'
 cask 'figma'
 
-cask 'skype'
 cask 'discord'
 cask 'zoom'
 

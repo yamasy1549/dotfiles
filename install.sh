@@ -52,10 +52,10 @@ pyenv global $python3_latest
 
 ##########
 # Node.jsのインストール
-##########
+#########
 
 step "最新版のNode.jsインストール"
-node_latest=`nodenv install -l | /usr/bin/grep -e "\s\+[0-9]\+.[0-9]\+.[0-9]\+$" | tail -1 | tr -d ' '`
+node_latest=`nodenv install -l | /usr/bin/grep -e "^[0-9]\+.[0-9]\+.[0-9]\+$" | tail -1 | tr -d ' '`
 nodenv install -s $node_latest
 nodenv global $node_latest
 
