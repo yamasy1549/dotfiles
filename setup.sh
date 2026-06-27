@@ -161,8 +161,4 @@ if [ ! -f "$HOME/.tmux/plugins/tpm/tpm" ]; then
 fi
 
 
-##########
-# その他インストールが必要なもののインストール
-##########
-
-zsh ./install.sh
+source $HOME/.zshrc

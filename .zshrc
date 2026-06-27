@@ -14,20 +14,6 @@ path=(
 
 
 # -------------------------------------
-# XXenv
-# -------------------------------------
-
-# rbenv
-eval "$(rbenv init -)"
-
-# pyenv
-eval "$(pyenv init -)"
-
-# nodenv
-eval "$(nodenv init -)"
-
-
-# -------------------------------------
 # export
 # -------------------------------------
 
@@ -41,15 +27,6 @@ export EDITOR=vim
 # ページャ
 export PAGER=cat
 export MANPAGER=less
-
-# rbenv
-export PATH="$HOME/.rbenv/shims:$PATH"
-
-# pyenv
-export PATH="$HOME/.pyenv/shims:$PATH"
-
-# nodenv
-export PATH="$HOME/.nodenv/shims:$PATH"
 
 # GNU系のコマンドを使う
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
