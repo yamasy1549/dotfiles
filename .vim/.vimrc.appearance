@@ -12,6 +12,7 @@ set guifont=Ricty\ for\ Powerline:h12
 set t_Co=256
 
 " カラースキーム
+let g:loaded_colorresp = 1
 colorscheme gochiusa
 
 " 行番号を表示
