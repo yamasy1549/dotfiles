@@ -57,42 +57,7 @@ let g:lightline = {
       \ }
 
 "---------------------------------------------------------------
-" NERD_commenter.vim
-"---------------------------------------------------------------
-
-"  ,, でコメントアウト/アンコメント
-let g:NERDSpaceDelims=1
-nmap ,, <plug>NERDCommenterToggle
-vmap ,, <plug>NERDCommenterSexy
-
-"---------------------------------------------------------------
-" unite.vim
-"---------------------------------------------------------------
-
-let g:unite_enable_start_insert = 1
-let g:unite_enable_split_vertically = 1
-let g:unite_winwidth = 48
-let g:unite_enable_short_source_names = 1
-let g:unite_source_history_yank_enable = 1
-
-nnoremap [unite] <Nop>
-nmap ,u [unite]
-noremap <silent> [unite]l :<C-u>Unite file<CR>
-noremap <silent> [unite]b :<C-u>Unite buffer<CR>
-noremap <silent> [unite]h :<C-u>Unite file_mru<CR>
-noremap <silent> [unite]y :<C-u>Unite history/yank<CR>
-noremap <silent> [unite]t :<C-u>Unite tab<CR>
-" unite-rails.vim
-noremap <silent> [unite]rc :<C-u>Unite rails/controller<CR>
-noremap <silent> [unite]rm :<C-u>Unite rails/model<CR>
-noremap <silent> [unite]rv :<C-u>Unite rails/view<CR>
-noremap <silent> [unite]rj :<C-u>Unite rails/webpack<CR>
-noremap <silent> [unite]rd :<C-u>Unite rails/db<CR>
-noremap <silent> [unite]rs :<C-u>Unite rails/spec<CR>
-noremap <silent> [unite]rt :<C-u>Unite rails/test<CR>
-
-"---------------------------------------------------------------
-" neocomplete
+" neocomplete.vim
 "---------------------------------------------------------------
 
 " Disable AutoComplPop.
@@ -134,3 +99,12 @@ autocmd BufRead,BufNewFile *.slim setfiletype slim
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
+
+"---------------------------------------------------------------
+" nerdcommenter
+"---------------------------------------------------------------
+
+"  ,, でコメントアウト/アンコメント
+let g:NERDSpaceDelims=1
+nmap ,, <plug>NERDCommenterToggle
+vmap ,, <plug>NERDCommenterSexy

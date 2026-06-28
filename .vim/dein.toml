@@ -1,9 +1,6 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-[[plugins]]
-repo = 'Shougo/unite.vim'
-
 
 # ---------------------------------------------
 # appearance
@@ -28,42 +25,7 @@ repo = 'Shougo/neocomplete.vim'
 on_i = 1
 
 [[plugins]]
-repo = 'mattn/emmet-vim'
-
-[[plugins]]
 repo = 'scrooloose/nerdcommenter'
-
-[[plugins]]
-repo = 'osyo-manga/vim-over'
-
-[[plugins]]
-repo = 'tpope/vim-endwise'
-
-
-# ---------------------------------------------
-# syntax
-# ---------------------------------------------
-
-[[plugins]]
-repo = 'othree/html5.vim'
-
-[[plugins]]
-repo = 'hail2u/vim-css3-syntax'
-
-[[plugins]]
-repo = 'tpope/vim-markdown'
-
-[[plugins]]
-repo = 'digitaltoad/vim-pug'
-
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-
-[[plugins]]
-repo = 'wavded/vim-stylus'
-
-[[plugins]]
-repo = 'posva/vim-vue'
 
 
 # ---------------------------------------------
@@ -71,13 +33,7 @@ repo = 'posva/vim-vue'
 # ---------------------------------------------
 
 [[plugins]]
-repo = 'thinca/vim-quickrun'
-
-[[plugins]]
 repo = 'christoomey/vim-tmux-navigator'
 
 [[plugins]]
-repo = 'basyura/unite-rails'
-
-# [[plugins]]
-# repo = 'tpope/vim-obsession'
+repo = 'tpope/vim-obsession'
