@@ -34,6 +34,20 @@ endif
 " lightline.vim
 "---------------------------------------------------------------
 
+function! s:lightline_tab_bufnr(n) abort
+  return get(tabpagebuflist(a:n), tabpagewinnr(a:n) - 1, -1)
+endfunction
+
+function! LightlineTabFilename(n) abort
+  let l:bufnr = s:lightline_tab_bufnr(a:n)
+  return l:bufnr > 0 && getbufvar(l:bufnr, '&filetype') ==# 'fern' ? '' : lightline#tab#filename(a:n)
+endfunction
+
+function! LightlineTabModified(n) abort
+  let l:bufnr = s:lightline_tab_bufnr(a:n)
+  return l:bufnr > 0 && getbufvar(l:bufnr, '&filetype') ==# 'fern' ? '' : lightline#tab#modified(a:n)
+endfunction
+
 let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'active': {
@@ -51,7 +65,11 @@ let g:lightline = {
       \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
       \ },
       \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-      \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
+      \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
+      \ 'tab_component_function': {
+      \   'filename': 'LightlineTabFilename',
+      \   'modified': 'LightlineTabModified'
+      \ }
       \ }
 
 "---------------------------------------------------------------
@@ -106,3 +124,15 @@ endif
 let g:NERDSpaceDelims=1
 nmap ,, <plug>NERDCommenterToggle
 vmap ,, <plug>NERDCommenterSexy
+
+"---------------------------------------------------------------
+" fern.vim
+"---------------------------------------------------------------
+
+let g:nerdfont#path#extension#customs = extend(get(g:, 'nerdfont#path#extension#customs', {}), {
+    \ 'md': '',
+    \ 'markdown': '',
+    \ })
+if exists('*nerdfont#path#extension#refresh')
+  call nerdfont#path#extension#refresh()
+endif

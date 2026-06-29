@@ -6,7 +6,6 @@
 syntax on
 
 " フォントとサイズ
-set guifont=Ricty\ for\ Powerline:h12
 set linespace=6
 
 " 256色で表示
@@ -55,3 +54,9 @@ set title
 
 " タブエリアを常に表示
 set showtabline=2
+
+" fern
+nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=40<CR>
+let g:fern#default_hidden=1
+let g:fern#renderer = 'nerdfont'
+let g:fern#renderer#nerdfont#indent_markers = 1
