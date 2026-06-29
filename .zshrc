@@ -235,6 +235,12 @@ zle -N source_zshrc
 bindkey '^z' source_zshrc
 
 # tmux
-if [ -z $TMUX ] ; then
-    tmux new-session \; source-file ~/.tmux.new-session
+if [ -z "$TMUX" ] ; then
+    if tmux attach-session 2>/dev/null; then
+        :
+    elif [ -e "$HOME/.tmux/resurrect/last" ]; then
+        tmux new-session
+    else
+        tmux new-session \; source-file ~/.tmux.new-session
+    fi
 fi
