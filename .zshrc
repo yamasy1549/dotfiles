@@ -44,6 +44,8 @@ export PATH=$PATH:$GOPATH/bin
 # Imagemagick
 export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 
+export PATH="$HOME/.local/bin:$PATH"
+
 # -------------------------------------
 # zsh options
 # -------------------------------------
